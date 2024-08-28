@@ -1,0 +1,54 @@
+{
+  "name": "@gelatonetwork/gelato-native-oracle-sdk",
+  "version": "1.0.0",
+  "description": "Gelato Native Oracle Solidity SDK",
+  "files": [
+    "contracts/constants",
+    "contracts/interfaces",
+    "contracts/L2PriceOracle.sol"
+  ],
+  "scripts": {
+    "build": "yarn install && yarn compile && npx tsc",
+    "clean": "yarn hardhat clean && rm -rf dist",
+    "compile": "npx hardhat compile --force",
+    "deploy": "npx hardhat deploy",
+    "test": "npx hardhat test",
+    "format": "prettier --write '*/**/*.*{js,sol,json,md,ts}'",
+    "format:check": "prettier --check '*/**/*.*{js,sol,json,md,ts}'",
+    "lint": "eslint --cache . && yarn lint:sol",
+    "lint:ts": "eslint -c .eslintrc.json --ext \"**/*.ts\" \"**/*.test.ts\"",
+    "lint:sol": "solhint 'contracts/**/*.sol'",
+    "prepare": "husky install",
+    "prepublishOnly": "yarn build && yarn format && yarn lint"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gelatodigital/gelato-native-oracle-sdk.git"
+  },
+  "dependencies": {
+    "@pythnetwork/pyth-sdk-solidity": "3.1.0"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "1.0.7",
+    "@typechain/hardhat": "9.1.0",
+    "@typescript-eslint/eslint-plugin": "6.6.0",
+    "@typescript-eslint/parser": "6.6.0",
+    "eslint": "8.48.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "hardhat": "2.22.8",
+    "husky": "8.0.3",
+    "lint-staged": "14.0.1",
+    "prettier": "2.8.8",
+    "prettier-plugin-solidity": "1.1.3",
+    "solhint": "3.6.2",
+    "solhint-plugin-prettier": "0.0.5",
+    "ts-node": "10.9.2",
+    "typescript": "5.5.4"
+  },
+  "lint-staged": {
+    "*.*{js,json,md,ts,sol,yml,yaml}": "prettier --write",
+    "*.*{ts,js}": "eslint -c .eslintrc.json"
+  }
+}
